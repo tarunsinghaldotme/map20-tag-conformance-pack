@@ -29,22 +29,57 @@ CONFIG_ROLE_TIMEOUT_SECONDS = 900
 SUPPORTED_RESOURCE_TYPES = [
     # Compute
     'AWS::EC2::Instance',
+    'AWS::Lambda::Function',
+
     # Storage
     'AWS::EC2::Volume',
+    'AWS::S3::Bucket',
     'AWS::Backup::BackupPlan',
     'AWS::Backup::BackupVault',
+    'AWS::FSx::FileSystem',
+    'AWS::EFS::FileSystem',
 
     # Network
     'AWS::ElasticLoadBalancing::LoadBalancer',
     'AWS::ElasticLoadBalancingV2::LoadBalancer',
     'AWS::ApiGatewayV2::Api',
     'AWS::ApiGateway::RestApi',
+    'AWS::EC2::TransitGateway',
+    'AWS::NetworkFirewall::Firewall',
+    'AWS::Route53::HostedZone',
+    'AWS::EC2::VPCEndpoint',
+    'AWS::DirectConnect::Connection',
+    'AWS::DirectConnect::VirtualInterface',
+    'AWS::EC2::VPC',
+    'AWS::CloudFront::Distribution',
     
     # Database
-    'AWS::S3::Bucket',
     'AWS::RDS::DBCluster',
     'AWS::RDS::DBInstance',
-    'AWS::DynamoDB::Table'
+    'AWS::DynamoDB::Table',
+    'AWS::OpenSearchService::Domain',
+
+    # Application Integration
+    'AWS::SNS::Topic',
+    'AWS::SQS::Queue',
+    'AWS::StepFunctions::StateMachine',
+
+    # Analytics
+    'AWS::QuickSight::Dashboard',
+    'AWS::QuickSight::Analysis',
+    'AWS::QuickSight::DataSet',
+
+    # Migration & Transfer
+    'AWS::DMS::ReplicationInstance',
+    'AWS::DMS::ReplicationTask',
+    'AWS::DataSync::Task',
+
+    # Management & Governance
+    'AWS::Logs::LogGroup',
+    
+    # Security, Identity, & Compliance
+    'AWS::ACM::Certificate'
+
 ]
 
 def evaluate_compliance(event, configuration_item, valid_rule_parameters):

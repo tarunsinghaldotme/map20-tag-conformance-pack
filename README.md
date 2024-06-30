@@ -30,6 +30,23 @@ This conformance pack checks for compliance on the following resource types:
 * RDS Cluster
 * DynamoDB Table
 * API Gateway
+* AWS Lambda
+* Amazon FSx
+* Amazon Elastic File System (EFS)
+* AWS Transit Gateway
+* AWS Network Firewall
+* VPC Endpoints
+* AWS Direct Connect
+* Amazon VPC
+* Amazon CloudFront
+* Amazon Simple Notification Service (SNS)
+* Amazon Simple Queue Service (SQS)
+* AWS Step Functions
+* Amazon QuickSight
+* AWS Database Migration Service (DMS)
+* AWS DataSync
+* Amazon CloudWatch Logs
+* AWS Certificate Manager (ACM)
 
 We are working to include more resources to this list in the future.
 
