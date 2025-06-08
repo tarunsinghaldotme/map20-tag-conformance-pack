@@ -47,10 +47,8 @@ SUPPORTED_RESOURCE_TYPES = [
     'AWS::EC2::TransitGateway',
     'AWS::NetworkFirewall::Firewall',
     'AWS::Route53::HostedZone',
-    'AWS::EC2::VPCEndpoint',
     'AWS::DirectConnect::Connection',
     'AWS::DirectConnect::VirtualInterface',
-    'AWS::EC2::VPC',
     'AWS::CloudFront::Distribution',
     
     # Database

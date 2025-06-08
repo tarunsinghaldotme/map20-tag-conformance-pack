@@ -35,9 +35,7 @@ This conformance pack checks for compliance on the following resource types:
 * Amazon Elastic File System (EFS)
 * AWS Transit Gateway
 * AWS Network Firewall
-* VPC Endpoints
 * AWS Direct Connect
-* Amazon VPC
 * Amazon CloudFront
 * Amazon Simple Notification Service (SNS)
 * Amazon Simple Queue Service (SQS)

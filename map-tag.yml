@@ -731,29 +731,6 @@ Resources:
                 InputParameters:
                   tagValue: !Ref tagValue
                   mapSignDate: !Ref mapSignDate
-          
-          MAPConfigRuleVPC:
-              Type: AWS::Config::ConfigRule
-              Properties:
-                ConfigRuleName: "map20-tag-vpc-rule"
-                Description: "Checks if correct MAP2.0 tags are assigned to VPC resources"
-                Scope:
-                  ComplianceResourceTypes:
-                  - "AWS::EC2::VPC"
-                Source:
-                  Owner: CUSTOM_LAMBDA
-                  SourceIdentifier: !Ref CustomRuleLambdaArn
-                  SourceDetails:
-                    -
-                      EventSource: "aws.config"
-                      MessageType: "ConfigurationItemChangeNotification"
-                    -
-                      EventSource: aws.config
-                      MessageType: OversizedConfigurationItemChangeNotification
-
-                InputParameters:
-                  tagValue: !Ref tagValue
-                  mapSignDate: !Ref mapSignDate
 
           MAPConfigRuleTransitGateway:
               Type: AWS::Config::ConfigRule
@@ -763,29 +740,6 @@ Resources:
                 Scope:
                   ComplianceResourceTypes:
                   - "AWS::EC2::TransitGateway"
-                Source:
-                  Owner: CUSTOM_LAMBDA
-                  SourceIdentifier: !Ref CustomRuleLambdaArn
-                  SourceDetails:
-                    -
-                      EventSource: "aws.config"
-                      MessageType: "ConfigurationItemChangeNotification"
-                    -
-                      EventSource: aws.config
-                      MessageType: OversizedConfigurationItemChangeNotification
-
-                InputParameters:
-                  tagValue: !Ref tagValue
-                  mapSignDate: !Ref mapSignDate
-          
-          MAPConfigRuleVPCEndpoints:
-              Type: AWS::Config::ConfigRule
-              Properties:
-                ConfigRuleName: "map20-tag-vpc-endpoints-rule"
-                Description: "Checks if correct MAP2.0 tags are assigned to VPC Endpoint resources"
-                Scope:
-                  ComplianceResourceTypes:
-                  - "AWS::EC2::VPCEndpoint"
                 Source:
                   Owner: CUSTOM_LAMBDA
                   SourceIdentifier: !Ref CustomRuleLambdaArn
@@ -1265,52 +1219,12 @@ Resources:
               TargetType: "SSM_DOCUMENT"
               TargetVersion: "1"
 
-          RuleRemediationVPC:
-            DependsOn: MAPConfigRuleVPC
-            Type: AWS::Config::RemediationConfiguration
-            Properties:
-              Automatic: "false"
-              ConfigRuleName: map20-tag-vpc-rule
-              MaximumAutomaticAttempts: 3
-              Parameters:
-                resourceId:
-                  ResourceValue:
-                    Value: "RESOURCE_ID"
-                tagValue:
-                  StaticValue:
-                    Values: 
-                      - !Ref tagValue
-              RetryAttemptSeconds: 120
-              TargetId: !Ref RemediationDoc
-              TargetType: "SSM_DOCUMENT"
-              TargetVersion: "1"
-
           RuleRemediationTransitGateway:
             DependsOn: MAPConfigRuleTransitGateway
             Type: AWS::Config::RemediationConfiguration
             Properties:
               Automatic: "false"
               ConfigRuleName: map20-tag-transit-gateway-rule
-              MaximumAutomaticAttempts: 3
-              Parameters:
-                resourceId:
-                  ResourceValue:
-                    Value: "RESOURCE_ID"
-                tagValue:
-                  StaticValue:
-                    Values: 
-                      - !Ref tagValue
-              RetryAttemptSeconds: 120
-              TargetId: !Ref RemediationDoc
-              TargetType: "SSM_DOCUMENT"
-              TargetVersion: "1"
-
-          RuleRemediationVPCEndpoints:
-            DependsOn: MAPConfigRuleVPCEndpoints
-            Type: AWS::Config::RemediationConfiguration
-            Properties:
-              Automatic: "false"
-              ConfigRuleName: map20-tag-vpc-endpoints-rule
               MaximumAutomaticAttempts: 3
               Parameters:
                 resourceId:
